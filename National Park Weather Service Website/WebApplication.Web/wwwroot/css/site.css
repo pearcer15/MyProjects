@@ -1,0 +1,339 @@
+﻿:root {
+    --deer: #B98166;
+    --laurel: #9FB994;
+    --pullman: #67401C;
+    --smoky: #152A03;
+    --camouflage: #7F7D68;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Oxygen');
+
+/*Layout Styling*/
+body {
+    background-color: var(--laurel);
+    color: var(--smoky);
+    font-family: 'Oxygen', sans-serif;
+    margin: 0px;
+    position: relative;
+    min-height: 75vh;
+    display: flex;
+    flex-direction: column;
+}
+
+nav {
+    background-color: var(--pullman);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.top {
+    position: fixed;
+    top: 0;
+    z-index: 2;
+    overflow: hidden;
+    background-color: var(--camouflage);
+    padding-top: 10px;
+    padding-left: 0;
+}
+nav .user-nav {
+    margin-right: 10px;
+}
+
+nav ul {
+    display: flex;
+    margin: 0px;
+}
+
+nav ul li {
+    list-style: none;
+    margin: 10px;
+    font-size: 1.5em;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+nav ul li:hover {
+    background-color: var(--deer);
+}
+
+.header img {
+    width: 30%;
+    height: auto;
+}
+
+footer {
+    background-color: var(--pullman);
+    width: 100%;
+}
+
+.footer p {
+    text-align: right;
+    padding: 5px;
+    margin: 0px;
+}
+
+.footer img {
+    height: 25px;
+}
+
+main {
+    margin-top: 280px;
+    margin-left: 1em;
+    flex: 1;
+    min-height: 67.1vh;
+}
+
+/*Layout Stylingn End*/
+
+/*Home Page Styling*/
+
+h1 {
+    font-size: 36px;
+}
+
+h1 span {
+    font-size: 24px;
+    font-weight: 300;
+}
+
+a {
+    color: var(--smoky);
+    text-decoration: none;
+}
+
+.park-list {
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.park {
+    display: flex;
+    margin-bottom: 50px;
+}
+
+.name-description {
+    display: flex;
+    flex-direction: column;
+}
+
+.park-name, .park-state {
+    text-decoration: none;
+}
+
+.park-info {
+    display: flex;
+    justify-content: space-between;
+    width: 40%;
+}
+
+.park-info span {
+    font-weight: bold;
+}
+
+/*Home Page styling end*/
+
+/*Detail View Styling*/
+
+.detail-image {
+    width: 50%;
+    height: auto;
+}
+
+.detail-page {
+    display: flex;
+    flex-direction: column;
+    margin:  0 1em;
+    align-items: center;
+}
+
+.quote {
+    margin-bottom: 0px;
+    font-style: italic;
+}
+
+.quote-source {
+    margin-top: 0px;
+}
+
+.park-image {
+    margin-right: 25px;
+}
+
+.park-description {
+    width: 66%;
+}
+
+.description {
+    width: 60%;
+}
+
+.forecast {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 50px;
+}
+
+.forecast-day {
+    border: 1px solid black;
+    background-color: skyblue;
+    width: 18%;
+    text-align: center;
+}
+
+.temps span {
+    font-weight: bold;
+}
+
+.forecast-day img {
+    width: 100%;
+}
+
+.forecast-day .warning {
+    color: firebrick;
+    font-weight: bolder;
+    padding: 10px;
+}
+
+.forecast-day .temps {
+    display: flex;
+    justify-content: space-around;
+}
+
+/*Detail View Styling End*/
+
+/*Temp Conversion Styling*/
+
+.temp-conversion {
+    display: flex;
+    margin-bottom: 10px;
+    align-items: center;
+}
+
+.temp-conversion input {
+    margin: 0px 10px;
+}
+
+.temp-conversion input[type=submit]{
+    padding: 5px;
+}
+
+/*Temp Conversion Styling End*/
+
+/*Survey Styling*/
+.survey {
+    margin-left: 1em;
+}
+
+.survey div {
+    margin-bottom: 5px;
+}
+
+form label{
+    display: inline-block;
+    width: 200px;
+}
+
+label {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.activity-radio {
+    display: flex;
+}
+
+.geek {
+    height: 250px;
+    display: inline-block;
+    padding-right: 25px;
+}
+
+.survey-results {
+    margin-left: 2em;
+}
+
+.survey-results h1 {
+    display: inline-block;
+    font-size: 10em;
+    margin-bottom: 15px;
+}
+
+.survey-results li{
+    font-size: 50px;
+}
+
+.survey-results ol {
+    margin-bottom: 50px;
+}
+
+.ranked-park {
+    margin-bottom: 10px;
+    display: flex;
+}
+
+.ranked-park img {
+    height: 200px;
+    width: auto;
+    margin-right: 25px;
+}
+
+.ranked-park h2 {
+    font-size: 24px;
+}
+
+.alert {
+    justify-content: center;
+    text-align: center;
+    display: flex;
+}
+
+    .alert p {
+        padding: 10px;
+        background-color: var(--camouflage);
+        border-radius: 5px;
+        width: 30%;
+    }
+
+/*Media Queries Styling*/
+
+@media screen and (width: 1280px)
+{
+    h1 {
+        font-size: 32px;
+    }
+
+    h1 span {
+        font-size: 18px;
+        font-weight: 300;
+    }
+
+    main {
+        margin-top: 200px;
+        margin-left: 1em;
+        flex: 1;
+        min-height: 60.7vh;
+    }
+
+    .park-image {
+        width: auto;
+        height: 250px;
+    }
+
+    .geek {
+        width: auto;
+        height: 150px;
+    }
+
+    .survey-results h1 {
+        font-size: 5em;
+    }
+
+    .ranked-park {
+        font-size: 18px;
+    }
+}

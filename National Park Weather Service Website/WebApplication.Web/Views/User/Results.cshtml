@@ -1,0 +1,35 @@
+﻿@model IList<SurveyResult>
+@{
+    ViewData["Title"] = "Results";
+    string message = (string)TempData["SurveySaved"];
+}
+
+<div class="survey-results">
+
+    @if (!string.IsNullOrEmpty(message))
+    {
+        <div class="alert">
+            <p>@message</p>
+        </div>
+    }
+
+
+    <img class="geek" src="~/images/geek.png" />
+    <h1>Survey Says:</h1>
+    <ol>
+        @foreach (SurveyResult result in Model)
+        {
+            <li>
+                <div class="ranked-park">
+                    <a asp-controller="home" asp-action="detail" asp-route-parkCode="@result.ParkCode"><img src="~/images/parks/@(result.ParkCode).jpg" /> </a>
+                    <div class="survey-info">
+                        <a asp-controller="home" asp-action="detail" asp-route-parkCode="@result.ParkCode"><h2>@result.ParkName</h2></a>
+                        <h2><span>Number of Votes:</span> @result.Votes</h2>
+                    </div>
+                </div>
+            </li>
+        }
+    </ol>
+
+
+</div>

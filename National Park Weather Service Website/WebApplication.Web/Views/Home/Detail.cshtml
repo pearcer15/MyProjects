@@ -1,0 +1,80 @@
+﻿@model Park
+@using Microsoft.AspNetCore.Http;
+@using Microsoft.AspNetCore.Mvc;
+
+@{
+    ViewData["Title"] = "Detail";
+    string tempPref = Context.Session.GetString("TempPreference");
+}
+
+<div class="detail-page">
+    <h1>@Model.ParkName</h1>
+
+    <img class="detail-image" src="~/images/parks/@(Model.ParkCode).jpg" />
+
+    <h3 class="quote">@Model.Quote</h3>
+    <h4 class="quote-source">@Model.QuoteSource</h4>
+    <div class="park-info">
+        <div class="quick-facts">
+            <h3>Basic Information</h3>
+            <p><span>Founded:</span> @Model.YearFounded</p>
+            <p><span>Location:</span> @Model.State</p>
+            <p><span>Climate: </span> @Model.Climate</p>
+            <p><span>Area:</span> @Model.Acreage acres</p>
+            <p><span>Elevation:</span> @Model.ElevationInFeet ft.</p>
+            <p><span>Wildlife:</span> @Model.NumberOfAnimalSpecies species of animal</p>
+        </div>
+
+        <div class="recreation">
+            <h3>Recreational Information</h3>
+            <p><span>Admission Fee:</span> @Model.EntryFee.ToString("C2")</p>
+            <p><span>Annual Visitors:</span> @Model.AnnualNumberOfVisitors people</p>
+            <p><span>Miles of Trail:</span> @Model.MilesOfTrail</p>
+            <p><span>Campsites:</span> @Model.NumberOfCampsites</p>
+        </div>
+    </div>
+
+    <div class="description">
+        <p>@Model.Description</p>
+    </div>
+
+    <h2>5 Day Forecast</h2>
+    <form class="temp-conversion" method="post" asp-controller="home" asp-action="detail" asp-route-parkCode="@Model.ParkCode">
+        <input type="radio" value="C" name="tempPref" />Celsius<br />
+        <input type="radio" value="F" name="tempPref" checked />Farenheit<br />
+        <input type="submit" value="Convert Temperatures" />
+    </form>
+
+    <div class="forecast">
+        @foreach (Weather day in Model.Forecast)
+        {
+            <div class="forecast-day">
+                <img src="~/images/weather/@(day.Forecast).png" />
+                <div class="temps">
+                    @if (tempPref == "C")
+                    {
+                        <p><span>High</span> @(((day.High - 32) / 1.8).ToString("N1"))&deg; C</p>
+                        <p><span>Low</span> @(((day.Low - 32) / 1.8).ToString("N1"))&deg; C</p>
+                    }
+                    else
+                    {
+                        <p><span>High</span> @(day.High)&deg; F</p>
+                        <p><span>Low</span> @(day.Low)&deg; F</p>
+                    }
+
+                </div>
+                <div class="warning">
+                    @if (day.WeatherWarning.Length > 0)
+                    {
+                        <p>@day.WeatherWarning</p>
+                    }
+                    @if (day.TempWarning.Length > 0)
+                    {
+                        <p>@day.TempWarning</p>
+                    }
+                </div>
+
+            </div>
+        }
+    </div>
+</div>
